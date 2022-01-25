@@ -1,0 +1,80 @@
+nexus:
+  enabled: true
+  
+logging:
+  enabled: false
+
+loki:
+  enabled: true
+
+kiali:
+  enabled: false
+
+jaeger:
+  enabled: false
+
+promtail:
+  enabled: true
+
+clusterAuditor:
+  enabled: false
+
+eckoperator:
+  enabled: false
+  
+fluentbit:
+  enabled: false
+
+clusterAuditor:
+  enabled: false
+
+gatekeeper:
+  enabled: true
+  values:
+    replicas: 1
+    violations:
+      allowedDockerRegistries:
+        enforcementAction: warn
+      allowedUsers:
+        enforcementAction: warn
+      httpsOnly:
+        enforcementAction: warn
+      hostNetworking:
+        match:
+          excludedNamespaces:
+          - istio-system
+    controllerManager:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 512Mi
+        limits:
+          cpu: null
+          memory: null
+    audit:
+      resources:
+        requests:
+          cpu: 400m
+          memory: 768Mi
+        limits:
+          cpu: null
+          memory: null
+    violations:
+      allowedDockerRegistries:
+        enforcementAction: dryrun
+
+istio:
+  values:
+    values: # possible values found here https://istio.io/v1.5/docs/reference/config/installation-options (ignore 1.5, latest docs point here)
+      global: # global istio operator values
+        proxy: # mutating webhook injected istio sidecar proxy's values
+          resources:
+            requests:
+              cpu: 0m # null get ignored if used here
+              memory: 0Mi
+            limits:
+              cpu: 0m
+              memory: 0Mi
+
+twistlock:
+  enabled: false # twistlock requires a license to work, so we're disabling it

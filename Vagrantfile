@@ -68,7 +68,7 @@ Vagrant.configure("2") do |config|
   #   apt-get install -y apache2
   # SHELL
   config.vm.provider "virtualbox" do |v|
-    v.memory = 10000
+v.memory = 10000
     v.cpus = 4
   end
 end
