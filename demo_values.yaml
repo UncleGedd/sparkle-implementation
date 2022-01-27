@@ -1,5 +1,6 @@
-nexus:
-  enabled: true
+addons:
+  nexus:
+    enabled: true
   
 logging:
   enabled: false
@@ -59,9 +60,6 @@ gatekeeper:
         limits:
           cpu: null
           memory: null
-    violations:
-      allowedDockerRegistries:
-        enforcementAction: dryrun
 
 istio:
   values:

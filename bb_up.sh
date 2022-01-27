@@ -5,8 +5,7 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
-cd ~
-cp /vagrant/demo_values.yaml ~
+cp ./demo_values.yaml ~
 
 # verify docker instllation
 docker run hello-world
@@ -59,8 +58,7 @@ k3d cluster create \
     --k3s-server-arg "--disable=traefik" \
     --port 80:80@loadbalancer \
     --port 443:443@loadbalancer \
-    --api-port 6443 \
-    --servers=2
+    --api-port 6443
 k config use-context k3d-k3s-default
 
 
