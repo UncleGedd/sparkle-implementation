@@ -1,6 +1,13 @@
 addons:
   nexus:
     enabled: true
+    values:
+      nexus:
+        docker:
+          enabled: true
+          registries:
+            - host: nexus-docker.bigbang.dev
+              port: 5000
   velero:
     enabled: true
     plugins:
@@ -31,15 +38,7 @@ addons:
             aws_access_key_id = minio
             aws_secret_access_key = minio123
       bbtests:
-        # TODO: Velero test is messy and times out running in BB CI
-        # https://repo1.dso.mil/platform-one/big-bang/apps/cluster-utilities/velero/-/issues/9
         enabled: false
-        scripts:
-          secretEnvs:
-            - name: NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
   minioOperator:
     enabled: true
   minio:
