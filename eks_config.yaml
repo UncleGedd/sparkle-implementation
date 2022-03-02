@@ -2,20 +2,20 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: nexus-experiment-cluster
+  name: dash-1
   region: us-east-1
 
 vpc:
   subnets:
     private:
       us-east-1a: { id: subnet-55fb9374 }
-      us-east-1b: { id: subnet-5dfcc110 }
+      us-east-1b: { id: subnet-5dfcc110  }
 
 managedNodeGroups:
-  - name: managed-ng-1-workers
+  - name: dash-ng-workers-1
     labels: { role: workers }
-    instanceType: t3a.2xlarge
-    desiredCapacity: 1
+    instanceType: m5.xlarge
+    desiredCapacity: 3
     privateNetworking: true
     volumeSize: 100
     volumeType: gp2

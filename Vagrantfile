@@ -67,8 +67,10 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provider "virtualbox" do |v|
-v.memory = 10000
+  config.vm.provider :libvirt do |libvirt|
+    libvirt.host = "libvirt-host.example.com"
+    libvirt.connect_via_ssh = truev.memory = 10000
     v.cpus = 4
+    v.memory = 12000
   end
 end
