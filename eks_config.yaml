@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: dash-1
+  name: dash-2
   region: us-east-1
 
 vpc:
